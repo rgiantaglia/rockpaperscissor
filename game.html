@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="game-java.js"></script>
+</head>
+<body>
+   <script>
+
+       const game = ["Rock" , "Paper", "Scissor"];
+
+       function computerPlay(){
+
+        const random = Math.floor(Math.random() * game.length);
+        console.log(random, game[random]);
+
+       }
+       computerPlay();
+
+       function playRound(playerSelection, computerSelection) {
+
+
+       }
+
+    const playerSelection = "rock";
+    const computerSelection = computerPlay();
+    console.log(playRound(playerSelection, computerSelection));
+    playRound();
+
+
+
+   </script>
+    
+</body>
+</html>
