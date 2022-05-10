@@ -15,22 +15,55 @@
        function computerPlay(){
 
         const random = Math.floor(Math.random() * game.length);
-        console.log(random, game[random]);
-
-       }
-       computerPlay();
-
-       function playRound(playerSelection, computerSelection) {
-
+        return (random, game[random]);
 
        }
 
-    const playerSelection = "rock";
-    const computerSelection = computerPlay();
-    console.log(playRound(playerSelection, computerSelection));
-    playRound();
 
 
+       function playRound(playerSelection, computerSelection){
+        if (playerSelection == "Rock" && computerSelection == "Scissor") {
+            alert("You win");
+            return;
+        }
+        else if (playerSelection == "Paper" && computerSelection == "Rock") {
+            alert("You win");
+            return;
+        }
+        else if (playerSelection == "Scissor" && computerSelection == "Paper") {
+            alert("You win");
+            return;
+        }
+        if (playerSelection == "Rock" && computerSelection == "Paper") {
+            alert("You loose");
+            return;
+        }
+        else if (playerSelection == "Paper" && computerSelection == "Scissor") {
+            alert("You win");
+            return;
+        }
+        else if (playerSelection == "Scissor" && computerSelection == "Rock") {
+            alert("You win");
+            return;
+        }
+        else if (playerSelection == computerSelection) {
+            alert("It's a tie!");
+            return;
+        }
+    }
+
+     
+
+
+
+        const playerSelection = prompt("Choose your weapon!");
+        const computerSelection = computerPlay();
+        playRound(playerSelection, computerSelection);
+        console.log(playerSelection);
+        console.log(computerSelection);
+
+   
+    
 
    </script>
     
