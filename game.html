@@ -4,24 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock, Paper, Scissor!</title>
     <script src="game-java.js"></script>
 </head>
 <body>
    <script>
 
-       const game = ["Rock" , "Paper", "Scissor"];
+       const rpsgame = ["Rock" , "Paper", "Scissor"];
 
        function computerPlay(){
 
-        const random = Math.floor(Math.random() * game.length);
-        return (random, game[random]);
+        const random = Math.floor(Math.random() * rpsgame.length);
+        return (random, rpsgame [random]);
 
        }
 
-
+       function game(){
 
        function playRound(playerSelection, computerSelection){
+        if (playerSelection == null){
+            alert('Boo!');
+            return;
+        }
+        else  {
+        playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
         if (playerSelection == "Rock" && computerSelection == "Scissor") {
             alert("You win");
             return;
@@ -49,21 +55,24 @@
         else if (playerSelection == computerSelection) {
             alert("It's a tie!");
             return;
+        }        
+        
+        else {
+            alert("Weapon not accepted");
         }
-    }
-
-     
-
-
+        }
+        }
 
         const playerSelection = prompt("Choose your weapon!");
+        alert("Rock, Paper, Scissor — Shoot!");
         const computerSelection = computerPlay();
         playRound(playerSelection, computerSelection);
         console.log(playerSelection);
         console.log(computerSelection);
-
-   
-    
+    }
+        for (let i = 0; i < 5; i++){
+        game();
+        }
 
    </script>
     
