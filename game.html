@@ -8,18 +8,44 @@
     <script src="game-java.js"></script>
 </head>
 <body>
+
+   
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissor">Scissor</button>
+
+    
+    
+
    <script>
+
+
+
 
        const rpsgame = ["Rock" , "Paper", "Scissor"];
 
        function computerPlay(){
-
         const random = Math.floor(Math.random() * rpsgame.length);
         return (random, rpsgame [random]);
-
        }
 
+  
+       
+       let playerSelection = document.addEventListener('click', function(e) { 
+          playerSelection = e.target.id;
+          console.log(playerSelection);
+       }, false ); 
+       
+
+   
+
+      
+
        function game(){
+
+        const computerSelection = computerPlay();
+        
+
 
        function playRound(playerSelection, computerSelection){
         if (playerSelection == null){
@@ -27,7 +53,7 @@
             return;
         }
         else  {
-        playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
+        playerSelection = playerSelection.toString().charAt(0).toUpperCase() + playerSelection.toString().slice(1).toLowerCase();
         if (playerSelection == "Rock" && computerSelection == "Scissor") {
             alert("You win");
             return;
@@ -61,18 +87,26 @@
             alert("Weapon not accepted");
         }
         }
+       
         }
 
-        const playerSelection = prompt("Choose your weapon!");
-        alert("Rock, Paper, Scissor — Shoot!");
-        const computerSelection = computerPlay();
-        playRound(playerSelection, computerSelection);
-        console.log(playerSelection);
+      
+    //    alert("Rock, Paper, Scissor — Shoot!");
+        
+    //    playRound(playerSelection, computerSelection);
+      //  console.log(playerSelection);
         console.log(computerSelection);
+
+        console.log(playRound(playerSelection));
+        
     }
-        for (let i = 0; i < 5; i++){
-        game();
-        }
+
+    game ();
+
+
+    //  for (let i = 0; i < 5; i++){
+    //   game();
+    //     }
 
    </script>
     
