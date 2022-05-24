@@ -9,104 +9,122 @@
 </head>
 <body>
 
-   
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissor">Scissor</button>
+    <div id="container">
+        <button id="rock" value="Rock">Rock</button>
+        <button id="paper" value="Paper">Paper</button>
+        <button id="scissor" value="Scissor">Scissor</button>
+    <div>
 
-    
-    
+    <div id="scoreBoard">
+        <p id="yourScore">Your Score:</p>
+        <p id="computerScore">Computer Score:</p>
+    </div>
 
    <script>
 
 
+        let yourScore = 0;
+        let computerScore = 0;
 
 
-       const rpsgame = ["Rock" , "Paper", "Scissor"];
+        const buttons = document.querySelectorAll('button');
+        document.addEventListener('click', function (e) {
 
-       function computerPlay(){
+        const button = document.querySelector(`button[value="${e.target.value}"]`);
+        const playerSelection = button.value.toString();
+        console.log(playerSelection);
+        
+        const container = document.querySelector('#container');
+
+        const content = document.createElement('p');
+        content.classList.add('content');
+        container.appendChild(content);
+
+
+        function computerPlay(){
+        const rpsgame = ["Rock" , "Paper", "Scissor"];
         const random = Math.floor(Math.random() * rpsgame.length);
         return (random, rpsgame [random]);
-       }
+        }
+        computerSelection = computerPlay();
+        console.log(computerSelection);
+        
 
-  
-       
-       let playerSelection = document.addEventListener('click', function(e) { 
-          playerSelection = e.target.id;
-          console.log(playerSelection);
-       }, false ); 
-       
+        function playRound(playerSelection, computerSelection){
 
-   
+        if (playerSelection === "Rock" && computerSelection === "Scissor") content.textContent = `You chose ${playerSelection} and the computer chose ${computerSelection}. You won this match! ${playerSelection} beats ${computerSelection}`;
+        if (playerSelection == "Paper" && computerSelection == "Rock") content.textContent = `You chose ${playerSelection} and the computer chose ${computerSelection}. You won this match! ${playerSelection} beats ${computerSelection}`;
+        if (playerSelection == "Scissor" && computerSelection == "Paper") content.textContent = `You chose ${playerSelection} and the computer chose ${computerSelection}. You won this match! ${playerSelection} beats ${computerSelection}`;
+        if (playerSelection == "Rock" && computerSelection == "Paper") content.textContent = `You chose ${playerSelection} and the computer chose ${computerSelection}. You lost this time! ${computerSelection} beats ${playerSelection}`;
+        if (playerSelection == "Paper" && computerSelection == "Scissor") content.textContent = `You chose ${playerSelection} and the computer chose ${computerSelection}. You lost this time! ${computerSelection} beats ${playerSelection}`;
+        if (playerSelection == "Scissor" && computerSelection == "Rock") content.textContent = `You chose ${playerSelection} and the computer chose ${computerSelection}. You lost this time! ${computerSelection} beats ${playerSelection}`;
+        if (playerSelection == computerSelection) content.textContent = `You chose ${playerSelection} and the computer chose ${computerSelection}. It's a tie!`;
 
-      
+        if (content.textContent.includes('won') == true) yourScore++;
+        document.getElementById('yourScore').innerText = 'Your Score: ' + yourScore;
 
-       function game(){
+        if (content.textContent.includes('lost') == true) computerScore++;    
+        document.getElementById('computerScore').innerText = 'Computer Score ' + computerScore;
 
-        const computerSelection = computerPlay();
+
+
+        }
+
+        function playAgain(){
+            
+            if (yourScore === 5){
+                alert('YOU WON!!!');
+                let playAgain = confirm('Do you want to play another game?');
+                if (playAgain) location.reload('#scoreBoard');
+                else {
+                    alert('Thanks for playing. See you next time!');
+                    window.close();
+                }
+                
+            }
+
+            if (computerScore === 5){
+                alert('You lost!');
+                let playAgain = confirm('Do you want to play another game?');
+                if (playAgain) location.reload('#scoreBoard');
+                else {
+                    alert('Thanks for playing. See you next time!');
+                    window.close();
+                }           
+            }
+
+        }
+    
+        playAgain();
+
+        playRound(playerSelection, computerSelection);
+
+
+
+        });
+        
+
         
 
 
-       function playRound(playerSelection, computerSelection){
-        if (playerSelection == null){
-            alert('Boo!');
-            return;
-        }
-        else  {
-        playerSelection = playerSelection.toString().charAt(0).toUpperCase() + playerSelection.toString().slice(1).toLowerCase();
-        if (playerSelection == "Rock" && computerSelection == "Scissor") {
-            alert("You win");
-            return;
-        }
-        else if (playerSelection == "Paper" && computerSelection == "Rock") {
-            alert("You win");
-            return;
-        }
-        else if (playerSelection == "Scissor" && computerSelection == "Paper") {
-            alert("You win");
-            return;
-        }
-        if (playerSelection == "Rock" && computerSelection == "Paper") {
-            alert("You loose");
-            return;
-        }
-        else if (playerSelection == "Paper" && computerSelection == "Scissor") {
-            alert("You win");
-            return;
-        }
-        else if (playerSelection == "Scissor" && computerSelection == "Rock") {
-            alert("You win");
-            return;
-        }
-        else if (playerSelection == computerSelection) {
-            alert("It's a tie!");
-            return;
-        }        
         
-        else {
-            alert("Weapon not accepted");
-        }
-        }
-       
-        }
+        
+        // else {
+        //    alert("Weapon not accepted");
+        // }
+        //  if (playerSelection == null){
+        //     alert('Boo!');
+        //      return;
+        //   }
 
       
     //    alert("Rock, Paper, Scissor — Shoot!");
         
     //    playRound(playerSelection, computerSelection);
       //  console.log(playerSelection);
-        console.log(computerSelection);
-
-        console.log(playRound(playerSelection));
+       
         
-    }
 
-    game ();
-
-
-    //  for (let i = 0; i < 5; i++){
-    //   game();
-    //     }
 
    </script>
     
